@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Adivinhação</h1>
+    <p>Digite um número entre 1 e 10:</p>
+    <input type="number" id="guess" min="1" max="10">
+    <button onclick="checkGuess()">Tentar</button>
+    <p id="feedback"></p>
+
+    <script>
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        const feedback = document.getElementById('feedback');
+
+        function checkGuess() {
+            const userGuess = Number(document.getElementById('guess').value);
+
+            if (userGuess === randomNumber) {
+                feedback.textContent = 'Parabéns! Você acertou!';
+            } else if (userGuess > randomNumber) {
+                feedback.textContent = 'Tente um número menor.';
+            } else {
+                feedback.textContent = 'Tente um número maior.';
+            }
+        }
+    </script>
+</body>
+</html>
